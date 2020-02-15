@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool CheckJumped()
     {
-        
+        return Input.GetKeyDown(KeyCode.Space);
     }
-
-    // Update is called once per frame
-    void Update()
+    public bool CheckColorChanged()
     {
-        
+        return Input.GetKeyDown(KeyCode.LeftControl);
     }
 }
