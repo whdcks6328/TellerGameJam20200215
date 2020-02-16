@@ -16,11 +16,25 @@ public class MapColorManager : MonoBehaviour
     {
         if (player.isBGWhite)
         {
-
+            if(this.gameObject.tag == "White")
+            {
+                this.GetComponentInChildren<BoxCollider>().enabled = false;
+            }
+            else
+            {
+                this.GetComponentInChildren<BoxCollider>().enabled = true;
+            }
         }
         else
         {
-
+            if (this.gameObject.tag == "Black")
+            {
+                this.GetComponentInChildren<BoxCollider>().enabled = false;
+            }
+            else
+            {
+                this.GetComponentInChildren<BoxCollider>().enabled = true;
+            }
         }
     }
     
