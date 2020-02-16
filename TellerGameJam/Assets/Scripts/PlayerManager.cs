@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] float speed = 1f;
-    [SerializeField] float jump = 1f;
+    [SerializeField] float speed = 3f;
+    [SerializeField] float jump = 500f;
     [SerializeField] float skillTime;
     [SerializeField] float sCooldown = 0f;
-    [SerializeField] float jCooldowm = 0f;
+    [SerializeField] bool isJumped = false;
     InputManager inputmanager;
     Rigidbody rb;
+    [SerializeField] public bool isBGWhite = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,32 +19,39 @@ public class PlayerManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         sCooldown += Time.deltaTime;
-        jCooldowm += Time.deltaTime;
 
         transform.Translate(speed * Time.deltaTime * Vector3.right);
 
-        if(inputmanager.CheckJumped() == true && jCooldowm > 3f) 
+        if (/*inputmanager.CheckJumped() == true */Input.GetKeyDown(KeyCode.Space) && isJumped == false) 
         { 
-            transform.Translate(jump * Time.deltaTime * Vector3.up);
-            jCooldowm = 0f;
+            rb.AddForce(jump * Time.deltaTime * Vector3.up, ForceMode.Impulse);
+            isJumped = true;
         }
-        if(inputmanager.CheckColorChanged() == true && sCooldown > 0.5f)
+        if(Input.GetKeyDown(KeyCode.LeftControl) && sCooldown > 2f)
         {
-            transform.Translate(Time.deltaTime * Vector3.up);
+            transform.Translate(10f * Time.deltaTime * Vector3.up);
+            isJumped = true;
             skillTime = 1f;
             rb.useGravity = false;
+            rb.velocity = Vector3.zero;
+            isBGWhite = !isBGWhite;
+            sCooldown = 0f;
         }
         if (skillTime > 0f)
         {
             skillTime -= Time.deltaTime;
+            if (skillTime < 0f) { skillTime = 0f; }
         }
         else
         {
             rb.useGravity = true;
-            sCooldown = 0f;
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        isJumped = false;
     }
 }
