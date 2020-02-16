@@ -16,7 +16,7 @@ public class MapColorManager : MonoBehaviour
     {
         if (player.isBGWhite)
         {
-            if(this.gameObject.tag == "White")
+            if(this.gameObject.tag == "WhiteObject")
             {
                 this.GetComponentInChildren<BoxCollider>().enabled = false;
             }
@@ -27,7 +27,7 @@ public class MapColorManager : MonoBehaviour
         }
         else
         {
-            if (this.gameObject.tag == "Black")
+            if (this.gameObject.tag == "BlackObject")
             {
                 this.GetComponentInChildren<BoxCollider>().enabled = false;
             }
