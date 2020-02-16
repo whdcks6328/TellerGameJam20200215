@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] float speed = 3f;
     [SerializeField] float jump = 500f;
     [SerializeField] float skillTime;
     [SerializeField] float sCooldown = 0f;
@@ -22,8 +21,6 @@ public class PlayerManager : MonoBehaviour
     void FixedUpdate()
     {
         sCooldown += Time.deltaTime;
-
-        transform.Translate(speed * Time.deltaTime * Vector3.right);
 
         if (/*inputmanager.CheckJumped() == true */Input.GetKeyDown(KeyCode.Space) && isJumped == false) 
         { 
