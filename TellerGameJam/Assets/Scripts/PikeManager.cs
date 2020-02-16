@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class ScenesManager : MonoBehaviour
+
+public class PikeManager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,9 +14,14 @@ public class ScenesManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
         {
-            SceneManager.LoadScene("HanTest");
+            //SceneManager.LoadScene("Gameover");
+            Debug.Log("Gameover");
         }
     }
 }
