@@ -27,7 +27,7 @@ public class PlayerManager : MonoBehaviour
             rb.AddForce(jump * Time.deltaTime * Vector3.up, ForceMode.Impulse);
             isJumped = true;
         }
-        if(Input.GetKeyDown(KeyCode.LeftControl) && sCooldown > 2f)
+        if(Input.GetKeyDown(KeyCode.LeftControl) && sCooldown > 1.3f)
         {
             transform.Translate(10f * Time.deltaTime * Vector3.up);
             isJumped = true;
