@@ -20,8 +20,7 @@ public class PikeManager : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            //SceneManager.LoadScene("Gameover");
-            Debug.Log("Gameover");
+            SceneManager.LoadScene("Gameover");
         }
     }
 }
