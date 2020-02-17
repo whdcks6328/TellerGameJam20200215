@@ -7,7 +7,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] float jump = 500f;
     [SerializeField] float skillTime;
     [SerializeField] float sCooldown = 0f;
-    [SerializeField] bool isJumped = false;
+    bool isJumped = false;
+    bool isChanging = false;
     InputManager inputmanager;
     Rigidbody rb;
     [SerializeField] public bool isBGWhite = false;
@@ -22,18 +23,24 @@ public class PlayerManager : MonoBehaviour
     {
         sCooldown += Time.deltaTime;
 
-        if (/*inputmanager.CheckJumped() == true */Input.GetKeyDown(KeyCode.Space) && isJumped == false) 
+        if (/*inputmanager.CheckJumped() == true */Input.GetKey(KeyCode.Space) && isJumped == false) 
         { 
             rb.AddForce(jump * Time.deltaTime * Vector3.up, ForceMode.Impulse);
             isJumped = true;
         }
-        if(Input.GetKeyDown(KeyCode.LeftControl) && sCooldown > 1.3f)
+        if(Input.GetKey(KeyCode.LeftControl) && !isChanging)
         {
+            //약간의 호버링
             transform.Translate(10f * Time.deltaTime * Vector3.up);
+            //추가점프 봉인, 추가 변경 봉인(땅에 닿으면 풀림)
             isJumped = true;
+            isChanging = true;
+            //무중력 돌임
             skillTime = 1f;
             rb.useGravity = false;
+            //점프중이었다면 속도 고정
             rb.velocity = Vector3.zero;
+            //색 변경
             isBGWhite = !isBGWhite;
             sCooldown = 0f;
         }
@@ -50,5 +57,6 @@ public class PlayerManager : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         isJumped = false;
+        isChanging = false;
     }
 }
