@@ -23,12 +23,12 @@ public class PlayerManager : MonoBehaviour
     {
         sCooldown += Time.deltaTime;
 
-        if (/*inputmanager.CheckJumped() == true */Input.GetKey(KeyCode.Space) && isJumped == false) 
+        if (!Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.Space) && isJumped == false) 
         { 
             rb.AddForce(jump * Time.deltaTime * Vector3.up, ForceMode.Impulse);
             isJumped = true;
         }
-        if(Input.GetKey(KeyCode.LeftControl) && !isChanging)
+        if(Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.Space) && !isChanging)
         {
             //약간의 호버링
             transform.Translate(10f * Time.deltaTime * Vector3.up);
