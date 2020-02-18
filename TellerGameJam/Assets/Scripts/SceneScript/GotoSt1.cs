@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PikeManager : MonoBehaviour
+public class GotoSt1 : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,13 +14,16 @@ public class PikeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        if (Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("Gameover");
+            SceneManager.LoadScene("Stage1");
+        }//타이틀에서 1스테이지 갈때
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "st 1")
+        {
+            SceneManager.LoadScene("Stage1");
         }
     }
 }

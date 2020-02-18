@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PikeManager : MonoBehaviour
+public class GotoSt2 : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,13 +14,17 @@ public class PikeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        if (Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("Gameover");
+            SceneManager.LoadScene("Stage2");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "st 1")
+        {
+            SceneManager.LoadScene("Stage2");
         }
     }
 }
