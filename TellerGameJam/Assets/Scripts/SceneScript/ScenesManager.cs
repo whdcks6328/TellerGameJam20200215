@@ -20,16 +20,12 @@ public class ScenesManager: MonoBehaviour
     }
 
     public void GameStart()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
+    {   
             SceneManager.LoadScene("Tutorial");
-        }
+            Debug.Log("Checked");
     }
     public void OnClickLeft()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
             if (selectSt.GetComponent<Text>().text == "Stage 3")
             {
                 selectSt.GetComponent<Text>().text = "Stage 2";
@@ -39,13 +35,12 @@ public class ScenesManager: MonoBehaviour
             {
                 selectSt.GetComponent<Text>().text = "Stage 1";
             }
-        }
+            Debug.Log("Checked");
     }
 
     public void OnClickRight()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
+            Debug.Log("Checked");
             if (selectSt.GetComponent<Text>().text == "Stage 1")
             {
                 selectSt.GetComponent<Text>().text = "Stage 2";
@@ -55,13 +50,11 @@ public class ScenesManager: MonoBehaviour
             {
                 selectSt.GetComponent<Text>().text = "Stage 3";
             }
-        }
     }
 
     public void StageSelect()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
+            Debug.Log("Checked");
             if (selectSt.GetComponent<Text>().text == "Stage 1")
             {
                 SceneManager.LoadScene("Stage1");
@@ -76,14 +69,11 @@ public class ScenesManager: MonoBehaviour
             {
                 SceneManager.LoadScene("Stage3");
             }
-        }
     }
 
     public void GameExit()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
+            Debug.Log("Checked");
             Application.Quit();
-        }
     }
 }
