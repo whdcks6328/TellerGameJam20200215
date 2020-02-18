@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PikeManager : MonoBehaviour
+public class GotoClear : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,11 +16,11 @@ public class PikeManager : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.name == "st 1")
         {
-            SceneManager.LoadScene("Gameover");
+            SceneManager.LoadScene("Clear");
         }
     }
 }
