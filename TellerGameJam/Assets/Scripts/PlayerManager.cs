@@ -11,11 +11,13 @@ public class PlayerManager : MonoBehaviour
     bool isChanging = false;
     InputManager inputmanager;
     Rigidbody rb;
+    AudioSource audioSource;
     [SerializeField] public bool isBGWhite = false;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,6 +45,9 @@ public class PlayerManager : MonoBehaviour
             //색 변경
             isBGWhite = !isBGWhite;
             sCooldown = 0f;
+
+            //Audio Play
+            audioSource.Play();
         }
         if (skillTime > 0f)
         {
